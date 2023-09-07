@@ -2,24 +2,27 @@ package com.example.youtube.core.base
 
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<VB: ViewBinding,
-                            VM: ViewModel> : AppCompatActivity() {
+                            VM: ViewModel
+                            > : AppCompatActivity() {
     protected lateinit var binding: VB
-    protected abstract val viewModel: VM
+    protected abstract var viewModel: VM
 
     protected abstract fun inflateViewBinding(): VB
 
+    protected abstract fun initViewModel(): VM
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = inflateViewBinding()
         setContentView(binding.root)
+
+        viewModel = initViewModel()
 
         checkInternetConnection()
         initView()

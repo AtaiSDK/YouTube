@@ -36,7 +36,7 @@ class Repository {
             }
 
         })
-        Log.d("LEONA", "getPlaylist: $data")
+        Log.d("Atai", "getPlaylist: ${data.value}")
         return data
     }
 }

@@ -11,7 +11,6 @@ class PlaylistAdapter : RecyclerView.Adapter<PlaylistAdapter.ViewHolder>() {
 
     private var _list = mutableListOf<PlaylistsModel.Item>()
 
-
     fun setListModel(playlist: PlaylistsModel){
         _list = playlist.items.toMutableList()
         notifyDataSetChanged()
